@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Prediction Result</title>
+    <!-- Link to Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Heart Failure Clinical Prediction Result</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Prediction Result:</h5>
+                        {% if predicted_classe == "1" %}
+                        <p class="card-text" >The patient's predicted outcome is: <b style="color: red;">{{ result }}</b></p>
+                        <p class="card-text"><b><span style="color: red;">DEATH_EVENT: {{ predicted_classe }} -
+                                    ({{ prediction }})</span></b></p>
+                        {% else %}
+                        <p class="card-text">The patient's predicted outcome is: <b style="color: green;">{{ result }}</b></p>
+                        <p class="card-text"><b><span style="color: green;">DEATH_EVENT: {{ predicted_classe }} -
+                                    ({{ prediction }})</span></b></p>
+                        {% endif %}
+                        <h5 class="card-title">Input Data:</h5>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Age</th>
+                                    <td>{{ input_data["age"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Anaemia</th>
+                                    <td>{{ input_data["anaemia"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Creatinine Phosphokinase</th>
+                                    <td>{{ input_data["creatinine_phosphokinase"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Diabetes</th>
+                                    <td>{{ input_data["diabetes"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ejection Fraction</th>
+                                    <td>{{ input_data["ejection_fraction"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>High Blood Pressure</th>
+                                    <td>{{ input_data["high_blood_pressure"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Platelets</th>
+                                    <td>{{ input_data["platelets"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Serum Creatinine</th>
+                                    <td>{{ input_data["serum_creatinine"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Serum Sodium</th>
+                                    <td>{{ input_data["serum_sodium"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sex</th>
+                                    <td>{{ input_data["sex"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Smoking</th>
+                                    <td>{{ input_data["smoking"][0] }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Time</th>
+                                    <td>{{ input_data["time"][0] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="/" class="btn btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to Bootstrap JS via CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
