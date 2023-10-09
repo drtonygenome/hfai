@@ -5,12 +5,12 @@ Your computer is installed Python
 
 Clone source code from git. 
 ```bash
-git clone https://github.com/Clarence161095/temp.git
+git clone https://github.com/drtonygenome/hfai.git
 ```
 
 Direct to temp project
 ```bash
-cd temp
+cd hfai
 ```
 
 Install library
