@@ -1,5 +1,5 @@
-runtime: python
+runtime: python27
 env: flex
 entrypoint: gunicorn -b :$PORT main:app
-timeout: '1600s'
+
 
