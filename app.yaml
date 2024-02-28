@@ -1,23 +1,8 @@
 steps:
-  # Docker Build
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
-           'us-central1-docker.pkg.dev/${coherent-vision-411700}/my-docker-repo/myimage', 
-           '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
 
-  # Docker Push
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 
-           'us-central1-docker.pkg.dev/${coherent-vision-411700}/my-docker-repo/myimage']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
 
-  # Entrypoint, timeout and environment variables
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    timeout: 240s
-    args: ['compute', 'instances', 
-           'create-with-container', 'my-vm-name',
-           '--container-image', 
-           'us-central1-docker.pkg.dev/${coherent-vision-411700}/my-docker-repo/myimage']
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+ 
