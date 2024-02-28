@@ -19,8 +19,6 @@ steps:
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "--user"]
 # [END cloudbuild_python_dependencies_yaml]
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
-
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
