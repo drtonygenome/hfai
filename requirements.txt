@@ -1,4 +1,3 @@
-certifi==2019.11.28
 Flask 
 scikit-learn 
 pandas 
