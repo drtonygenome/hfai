@@ -1,5 +1,6 @@
 runtime: python
 env: flex
+entrypoint: python main.py
 
 liveness_check:
   check_interval_sec: 30
