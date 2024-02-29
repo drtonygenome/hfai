@@ -1,7 +1,22 @@
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '-t','gcr.io/coherent-vision-411700/coherent-vision-411700:$SHORT_SHA', '.']
+runtime: python39
 
+# service: test-service
 
+# instance_class: "F1"
+
+# env_variables:
+#   BUCKET_NAME: "gcloud-tutorial-388308.appspot.com"
+  
+# handlers:
+#   - url: /.*
+#     secure: always
+#     redirect_http_response_code: 301
+
+# automatic_scaling:
+#   min_instances: 1
+#   max_instances: 2
+#   max_concurrent_requests: 5
+
+basic_scaling:
+  idle_timeout: 1m
+  max_instances: 1
