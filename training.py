@@ -40,15 +40,15 @@ early_stopping = tf.keras.callbacks.EarlyStopping(
 history = model.fit(X_train_scaled, y_train, validation_data=(X_eval_scaled, y_eval),
                     epochs=10000, callbacks=[early_stopping], verbose=1)
 
-# Dừng training khi độ chính xác > 95%
+# Dừng training khi độ chính xác > 99%
 for i in range(len(history.history['val_accuracy'])):
-    if history.history['val_accuracy'][i] > 0.95:
+    if history.history['val_accuracy'][i] > 0.99:
         model.stop_training = True
         break
 
-model.save("heart_failure_clinical_model")
+model.save("heart_failure_clinical_model.keras")
 
-loaded_model = tf.keras.models.load_model("heart_failure_clinical_model")
+loaded_model = tf.keras.models.load_model("heart_failure_clinical_model.keras")
 
 eval_loss, eval_acc = loaded_model.evaluate(X_eval_scaled, y_eval)
 print(f"\nĐộ chính xác của model đã tải trên dữ liệu đánh giá với 50 record thử nghiệm: {eval_acc * 100:.2f}%")
