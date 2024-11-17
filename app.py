@@ -23,7 +23,8 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_eval_scaled = scaler.transform(X_eval)
 
-loaded_model = tf.keras.models.load_model("heart_failure_clinical_model")
+#loaded_model = tf.keras.models.load_model("heart_failure_clinical_model")
+loaded_model = keras.layers.TFSMLayer(heart_failure_clinical_model, call_endpoint='serving_default')
 
 eval_loss, eval_acc = loaded_model.evaluate(X_eval_scaled, y_eval)
 print(
