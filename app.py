@@ -24,12 +24,12 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_eval_scaled = scaler.transform(X_eval)
 
-#loaded_model = tf.keras.models.load_model("heart_failure_clinical_model")
-loaded_model = keras.layers.TFSMLayer(heart_failure_clinical_model.keras, call_endpoint='serving_default')
+loaded_model = tf.keras.models.load_model("heart_failure_prediction.h5")
+#loaded_model = keras.layers.TFSMLayer(heart_failure_clinical_model.keras, call_endpoint='serving_default')
 
 eval_loss, eval_acc = loaded_model.evaluate(X_eval_scaled, y_eval)
 print(
-    f"\nĐộ chính xác của model đã tải trên dữ liệu đánh giá với 50 record thử nghiệm: {eval_acc * 100:.2f}%")
+    f"\nacc50: {eval_acc * 100:.2f}%")
 
 X_test = test_data.drop(columns=["DEATH_EVENT"])
 y_test = test_data["DEATH_EVENT"]
