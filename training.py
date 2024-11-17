@@ -1,4 +1,4 @@
-import pandas as pd
+cimport pandas as pd
 import tensorflow as tf
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
@@ -46,12 +46,12 @@ for i in range(len(history.history['val_accuracy'])):
         model.stop_training = True
         break
 
-model.save("heart_failure_clinical_model.keras")
+model.save("heart_failure_prediction.h5")
 
-loaded_model = tf.keras.models.load_model("heart_failure_clinical_model.keras")
+loaded_model = tf.keras.models.load_model("heart_failure_prediction.h5")
 
 eval_loss, eval_acc = loaded_model.evaluate(X_eval_scaled, y_eval)
-print(f"\nĐộ chính xác của model đã tải trên dữ liệu đánh giá với 50 record thử nghiệm: {eval_acc * 100:.2f}%")
+print(f"\naccof50: {eval_acc * 100:.2f}%")
 
 X_test = test_data.drop(columns=["DEATH_EVENT"])
 y_test = test_data["DEATH_EVENT"]
@@ -64,7 +64,7 @@ predicted_classes = (predictions > 0.5).astype(int)
 
 correct_preds = predicted_classes.flatten() == y_test.values
 correct_count = sum(correct_preds)
-print(f"Số lượng dự đoán chính xác: {correct_count}/{len(y_test)}")
+print(f"correctcount: {correct_count}/{len(y_test)}")
 
 for i in range(len(y_test)):
     if correct_preds[i]:
